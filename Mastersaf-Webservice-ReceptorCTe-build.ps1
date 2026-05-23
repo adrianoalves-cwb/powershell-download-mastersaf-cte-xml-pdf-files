@@ -2,11 +2,15 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [String]$Company,
-    [Parameter(Mandatory = $true)]
     [String]$UserName,
     [Parameter(Mandatory = $true)]
     [String]$Userkey,
+    [Parameter(Mandatory = $true)]
+    [String]$CompanyCNPJ,
+    [Parameter(Mandatory = $true)]
+    [String]$CompanyIE,
+    [Parameter(Mandatory = $true)]
+    [String]$SavingFolderName,
     [Parameter(Mandatory = $true)]
     [String]$MastersafWebServiceURL,
     [Parameter(Mandatory = $true)]
@@ -14,29 +18,6 @@ param(
 )
 
 $TXTSavingPath = $env:BUILD_ARTIFACTSTAGINGDIRECTORY
-
-Switch ($Company) {
-    "NOVA" {
-        $CompanyCNPJ = "78150693422047"
-        $CompanyIE = "6248091735";
-        break
-    }
-    "ZILO" {
-        $CompanyCNPJ = "50287416933158"
-        $CompanyIE = "9157362048";
-        break
-    }
-    "TREX" {
-        $CompanyCNPJ = "36421980574763"
-        $CompanyIE = "847120536904";
-        break
-    }
-    "LUMA" {
-        $CompanyCNPJ = "91643578210859"
-        $CompanyIE = "3026915847";
-        break
-    }
-}
 
 Function GetToken($MastersafWebServiceURL) {
     $LoginUrl = $MastersafWebServiceURL + "/api/login"

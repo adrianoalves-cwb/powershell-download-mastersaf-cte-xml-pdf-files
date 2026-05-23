@@ -26,9 +26,11 @@ Purpose:
 - Creates `Invoice_ErrorList.csv` for non-authorized/non-canceled invoice statuses.
 
 Parameters:
-- `Company` (valid values in current script: `NOVA`, `ZILO`, `TREX`, `LUMA`)
 - `UserName`
 - `Userkey`
+- `CompanyCNPJ`
+- `CompanyIE`
+- `SavingFolderName`
 - `MastersafWebServiceURL`
 - `DaysInThePast` (example: `-1`)
 
@@ -91,9 +93,11 @@ Open PowerShell in the repository folder and run:
 # 1) Build stage
 $env:BUILD_ARTIFACTSTAGINGDIRECTORY = "C:\temp\mastersaf\build-artifacts"
 .\Mastersaf-Webservice-ReceptorCTe-build.ps1 `
-  -Company "NOVA" `
   -UserName "your-user" `
   -Userkey "your-key" `
+  -CompanyCNPJ "78150693422047" `
+  -CompanyIE "6248091735" `
+  -SavingFolderName "NOVA" `
   -MastersafWebServiceURL "https://your-mastersaf-host/webservice" `
   -DaysInThePast "-1"
 
@@ -174,9 +178,11 @@ stages:
         targetType: filePath
         filePath: Mastersaf-Webservice-ReceptorCTe-build.ps1
         arguments: >-
-          -Company "$(Company)"
           -UserName "$(UserName)"
           -Userkey "$(Userkey)"
+          -CompanyCNPJ "$(CompanyCNPJ)"
+          -CompanyIE "$(CompanyIE)"
+          -SavingFolderName "$(SavingFolderName)"
           -MastersafWebServiceURL "$(MastersafWebServiceURL)"
           -DaysInThePast "$(DaysInThePast)"
       env:
