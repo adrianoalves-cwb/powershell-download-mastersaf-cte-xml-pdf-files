@@ -2,6 +2,10 @@
 
 This repository contains PowerShell scripts to download XML and PDF invoices from Thomson Reuters Mastersaf using the Mastersaf REST API.
 
+Note:
+- This script set was designed and tested to download ReceptorCTe invoices from the Mastersaf API link.
+- It may also be used for ReceptorNFe and NFe, but testing is required before relying on it in those scenarios.
+
 ## Scripts and execution order
 
 Run the scripts in this order:
@@ -47,7 +51,6 @@ Parameters:
 - `CompanyCNPJ`
 - `CompanyIE`
 - `SavingFolderName`
-- `ApplicationName`
 - `MastersafWebServiceURL`
 - `XMLSavingFolderPath`
 - `PDFSavingFolderPath`
@@ -102,7 +105,6 @@ $env:BUILD_ARTIFACTSTAGINGDIRECTORY = "C:\temp\mastersaf\build-artifacts"
   -CompanyCNPJ "78150693422047" `
   -CompanyIE "6248091735" `
   -SavingFolderName "NOVA" `
-  -ApplicationName "Mastersaf-Webservice-ReceptorCTe-Daily" `
   -MastersafWebServiceURL "https://your-mastersaf-host/webservice" `
   -XMLSavingFolderPath "C:\temp\mastersaf\xml" `
   -PDFSavingFolderPath "C:\temp\mastersaf\pdf" `
@@ -119,7 +121,6 @@ $env:BUILD_ARTIFACTSTAGINGDIRECTORY = "C:\temp\mastersaf\build-artifacts"
   -CompanyCNPJ "78150693422047" `
   -CompanyIE "6248091735" `
   -SavingFolderName "NOVA" `
-  -ApplicationName "Mastersaf-Webservice-ReceptorCTe-Daily" `
   -MastersafWebServiceURL "https://your-mastersaf-host/webservice" `
   -XMLSavingFolderPath "C:\temp\mastersaf\xml" `
   -PDFSavingFolderPath "C:\temp\mastersaf\pdf" `
@@ -153,7 +154,6 @@ variables:
   Company: 'NOVA'
   MastersafWebServiceURL: 'https://your-mastersaf-host/webservice'
   DaysInThePast: '-1'
-  ApplicationName: 'Mastersaf-Webservice-ReceptorCTe-Daily'
   XMLSavingFolderPath: '$(Pipeline.Workspace)\\xml'
   PDFSavingFolderPath: '$(Pipeline.Workspace)\\pdf'
   LogFolderPath: '$(Pipeline.Workspace)\\logs'
@@ -205,7 +205,6 @@ stages:
           -CompanyCNPJ "$(CompanyCNPJ)"
           -CompanyIE "$(CompanyIE)"
           -SavingFolderName "$(SavingFolderName)"
-          -ApplicationName "$(ApplicationName)"
           -MastersafWebServiceURL "$(MastersafWebServiceURL)"
           -XMLSavingFolderPath "$(XMLSavingFolderPath)"
           -PDFSavingFolderPath "$(PDFSavingFolderPath)"
@@ -226,7 +225,6 @@ stages:
           -CompanyCNPJ "$(CompanyCNPJ)"
           -CompanyIE "$(CompanyIE)"
           -SavingFolderName "$(SavingFolderName)"
-          -ApplicationName "$(ApplicationName)"
           -MastersafWebServiceURL "$(MastersafWebServiceURL)"
           -XMLSavingFolderPath "$(XMLSavingFolderPath)"
           -PDFSavingFolderPath "$(PDFSavingFolderPath)"

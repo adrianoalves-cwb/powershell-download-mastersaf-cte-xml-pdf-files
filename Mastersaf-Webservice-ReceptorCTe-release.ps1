@@ -14,8 +14,6 @@ param(
     [Parameter(Mandatory = $true)]
     [String]$SavingFolderName,
     [Parameter(Mandatory = $true)]
-    [String]$ApplicationName,
-    [Parameter(Mandatory = $true)]
     [String]$MastersafWebServiceURL,
     [Parameter(Mandatory = $true)]
     [String]$XMLSavingFolderPath,
@@ -78,7 +76,7 @@ Function WriteLog {
 
     $TimeStamp = (Get-Date).ToString('dd/MM/yyyy HH:mm:ss tt')
 
-    $LogFile = $LogFolderPath + "\" + $ApplicationName + "-" + $Company + "-" + $LogNameDateFormat + ".txt"
+    $LogFile = $LogFolderPath + "\" + $Company + "-" + $LogNameDateFormat + ".txt"
 
     $Line = $TimeStamp + "- " + $Level + " - " + $Message
 
